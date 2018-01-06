@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-list>
+
+  <ion-item>
+    <ion-label stacked>pH Inicial</ion-label>
+    <ion-input type="number" step="any" [(ngModel)]="phi"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>pH Desejado</ion-label>
+    <ion-input type="number" step="any" [(ngModel)]="phf"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>pKa do Tampão</ion-label>
+    <ion-input type="number" step="any" [(ngModel)]="pka"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Concentração do Tampão</ion-label>
+    <ion-input type="number" step="any" [(ngModel)]="ctamp"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Volume do Tampão (em mL)</ion-label>
+    <ion-input type="number" step="any" [(ngModel)]="vtamp"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Concentração da Base</ion-label>
+    <ion-input type="number" step="any" [(ngModel)]="cb"></ion-input>
+  </ion-item>
+  <br>
+  <button ion-button block (click)="checkpKa()">Calcular</button>
+  <p align="center">{{header}}</p>
+  <h1 align="center">{{result}}</h1>
+
+
+</ion-list>
+</ion-content>
