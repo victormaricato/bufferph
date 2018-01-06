@@ -25683,9 +25683,8 @@ page-home .result {
 }
 
 page-home .app-logo {
-  color: white;
-  font-size: 20px;
   height: 40px;
   width: auto;
+  font-size: 20px;
   margin-left: 50%;
 }

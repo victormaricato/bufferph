@@ -60,35 +60,38 @@ var HomePage = (function () {
     }
     HomePage.prototype.checkpKa = function () {
         var _this = this;
-        if (this.phi > 14 || this.phi < 1 || this.phf > 14 || this.phi < 14) {
+        if (+this.phi > 14 || +this.phi < 1 || +this.phf > 14 || +this.phf > 14) {
             var alert_1 = this.alertCtrl.create({
                 title: 'WOOOOW',
                 subTitle: 'Cheque seus pH`s, eles estão um pouco fora da realidade!!',
                 buttons: ['OK']
             });
             alert_1.present();
-            if (Math.abs(+this.pka - this.phf) > 1) {
-                this.result = "Não disponível";
-                var confirm_1 = this.alertCtrl.create({
-                    title: 'Zona de Tamponamento',
-                    message: 'Normalmente, os tampões suportam um pH +- 1 que seu pKa. Têm certeza que os valores estão corretos?',
-                    buttons: [
-                        {
-                            text: 'Não, deixe-me corrigir',
-                        },
-                        {
-                            text: 'Sim, estão corretos',
-                            handler: function () {
-                                _this.calculate();
-                            }
+        }
+        else {
+            this.calculate();
+        }
+        if (+this.pka - +this.phf > 1) {
+            this.result = "Não disponível";
+            var confirm_1 = this.alertCtrl.create({
+                title: 'Zona de Tamponamento',
+                message: 'Normalmente, os tampões suportam um pH +- 1 que seu pKa. Têm certeza que os valores estão corretos?',
+                buttons: [
+                    {
+                        text: 'Não, deixe-me corrigir',
+                    },
+                    {
+                        text: 'Sim, estão corretos',
+                        handler: function () {
+                            _this.calculate();
                         }
-                    ]
-                });
-                confirm_1.present();
-            }
-            else {
-                this.calculate();
-            }
+                    }
+                ]
+            });
+            confirm_1.present();
+        }
+        else {
+            this.calculate();
         }
     };
     HomePage.prototype.calculate = function () {
@@ -115,7 +118,7 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\maric\Documents\GitHub\bufferph\src\pages\home\home.html"*/'\n<ion-content no-padding>\n  <ion-toolbar class="ion-toolbar" color="primary" align="center">\n    <img src="assets/icon/icn.png" class="app-logo">\n  </ion-toolbar>\n\n  <ion-list>\n\n  <ion-item>\n    <ion-label stacked>pH Inicial</ion-label>\n    <ion-input type="number" step="any" [(ngModel)]="phi"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>pH Desejado</ion-label>\n    <ion-input type="number" step="any" [(ngModel)]="phf"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>pKa do Tampão</ion-label>\n    <ion-input type="number" step="any" [(ngModel)]="pka"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Concentração do Tampão</ion-label>\n    <ion-input type="number" step="any" [(ngModel)]="ctamp"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Volume do Tampão (em mL)</ion-label>\n    <ion-input type="number" step="any" [(ngModel)]="vtamp"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Concentração da Base</ion-label>\n    <ion-input type="number" step="any" [(ngModel)]="cb"></ion-input>\n  </ion-item>\n  <br>\n  <button ion-button block (click)="checkpKa()">Calcular</button>\n  <p align="center">{{header}}</p>\n  <h1 align="center">{{result}}</h1>\n\n\n</ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\maric\Documents\GitHub\bufferph\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\maric\Documents\GitHub\bufferph\src\pages\home\home.html"*/'\n\n<ion-content no-padding>\n\n  <ion-toolbar color="primary" align="center">\n\n    <img src="assets/icon/icn.png" class="app-logo">\n\n  </ion-toolbar>\n\n<ion-list>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>pH Inicial</ion-label>\n\n    <ion-input type="number" step="any" [(ngModel)]="phi"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>pH Desejado</ion-label>\n\n    <ion-input type="number" step="any" [(ngModel)]="phf"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>pKa do Tampão</ion-label>\n\n    <ion-input type="number" step="any" [(ngModel)]="pka"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>Concentração do Tampão</ion-label>\n\n    <ion-input type="number" step="any" [(ngModel)]="ctamp"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>Volume do Tampão (em mL)</ion-label>\n\n    <ion-input type="number" step="any" [(ngModel)]="vtamp"></ion-input>\n\n  </ion-item>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>Concentração da Base</ion-label>\n\n    <ion-input type="number" step="any" [(ngModel)]="cb"></ion-input>\n\n  </ion-item>\n\n  <br>\n\n  <button ion-button block (click)="checkpKa()">Calcular</button>\n\n  <p align="center">{{header}}</p>\n\n  <h1 align="center">{{result}}</h1>\n\n\n\n\n\n</ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\maric\Documents\GitHub\bufferph\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], HomePage);
